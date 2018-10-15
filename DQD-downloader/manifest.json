@@ -1,0 +1,28 @@
+{
+  "name": "DQD Img Downloader",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Download imgs.",
+  "icons": {
+    "16": "images/logo.png",
+    "48": "images/logo.png",
+    "128": "images/logo.png"
+  },
+  "permissions": [
+    "downloads",
+    "declarativeContent"
+  ],
+  "page_action": {
+    "default_title": "懂球帝图片下载",
+    "default_icon": "images/logo.png",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": ["scripts/background.js"]
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["scripts/jquery.js", "scripts/content.js"],
+    "run_at": "document_start"
+  }]
+}
