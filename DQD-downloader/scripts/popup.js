@@ -12,9 +12,29 @@ function sendMessageToContentScript(message, callback) {
   });
 }
 
-$('button').on('click', function () {
+/**
+ * 下载球队头像
+ */
+$('#team').on('click', function () {
   sendMessageToContentScript({
-    cmd: 'imgs'
+    cmd: 'team'
+  }, function (response) {
+    $text.text(response.length)
+    for (var i = 0; i < response.length; i++) {
+      var url = response[i].url;
+      var text = response[i].text + '.png';
+      $text.append(`<div>${url}, ${text}</div>`)
+      download(response[i].url, response[i].text + '.png');
+    }
+  });
+})
+
+/**
+ * 下载球员头像
+ */
+$('#player').on('click', function() {
+  sendMessageToContentScript({
+    cmd: 'player'
   }, function (response) {
     $text.text(response.length)
     for (var i = 0; i < response.length; i++) {

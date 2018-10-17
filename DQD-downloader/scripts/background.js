@@ -4,7 +4,7 @@ chrome.runtime.onInstalled.addListener(function(){
           {
               conditions: [
                   // 只有打开百度才显示pageAction
-                  new chrome.declarativeContent.PageStateMatcher({pageUrl: {urlContains: 'www.dongqiudi.com/data'}})
+                  new chrome.declarativeContent.PageStateMatcher({pageUrl: {urlContains: 'www.dongqiudi.com'}})
               ],
               actions: [new chrome.declarativeContent.ShowPageAction()]
           }
